@@ -1,0 +1,8 @@
+<view class="bg"><image src="../../images/login.png"></image></view>
+<view class="dialog">
+  <view>手机号验证登录</view>
+  <view class="list"><text>手机号</text><input placeholder='输入手机号'></input></view>
+  <view class="list"><text>验证码</text><input placeholder='输入验证码'></input><view class="code">获取验证码</view></view>
+  <view class="login">登录</view>
+</view>
+<view class="zc">注册</view>

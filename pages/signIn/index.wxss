@@ -1,0 +1,57 @@
+.bg {
+  width: 750rpx;
+  height: 503rpx;
+  background:rgba(0,140,240,1);
+}
+.sign_in {
+  margin: auto;
+  margin-top: -493rpx;
+  width:690rpx;
+  background:rgba(255,255,255,1);
+  border-radius:10rpx;
+}
+.sign_in>view {
+  margin: 0 20rpx;
+  display: flex;
+  align-items: center;
+  padding: 25rpx 0;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  font-family:PingFang-SC-Medium;
+  border-bottom: 1rpx solid rgba(220,220,220,1);
+}
+.title {
+  width: 150rpx;
+  font-weight:500;
+  color:rgba(0,0,0,1);
+}
+.code {
+  padding: 0 26rpx;
+  font-size:28rpx;
+  line-height: 44rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+  border-left: 1rpx solid rgba(220,220,220,1);
+}
+.btn {
+  margin-top: 48rpx !important;
+  display: flex;
+  justify-content: center;
+  background:rgba(0,140,240,1);
+  border-radius:10rpx;
+  font-size:36rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+}
+.deal {
+  display: flex;
+  justify-content: center;
+}
+.deal text {
+  color: rgba(0,140,240,1);
+}
+radio {
+  transform:scale(0.7);
+}
