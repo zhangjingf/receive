@@ -20,7 +20,7 @@ Component({
     },
     goMymenu: function () {
       wx.reLaunch({
-        url: '../myMenu/index',
+        url: '../mine/index',
       })
     }
   }
