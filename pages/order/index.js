@@ -5,7 +5,8 @@ Page({
     index1: 0,
     index11: 5,
     index2: 0,
-    index22: 5
+    index22: 5,
+    list: null
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -24,16 +25,22 @@ Page({
     });
   },
   listOne: function () {
+    const self = this;
     order.listOne({startIndex: this.data.index1, endIndex: this.data.index11}, function (res) {
       if (res.code == 0) {
-        console.log(res)
+        self.setData({
+          list: res.data
+        })
       }
     })
   },
   listTwo: function () {
+    const self = this;
     order.listTwo({startIndex: this.data.index2, endIndex: this.data.index22}, function (res) {
       if (res.code == 0) {
-        console.log(res)
+        self.setData({
+          list: res.data
+        })
       }
     })
   }

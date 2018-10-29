@@ -2,9 +2,19 @@
 <view class="sign_in">
     <view><text class="title">手机号</text><input placeholder='输入手机号' bindinput='phone'></input></view>
     <view><text class="title">真实姓名</text><input placeholder='输入姓名'></input></view>
-    <view><text class="title">所在学校</text><input placeholder='输入学校'></input></view>
+    <view bindtap="chooseSchool"><text class="title">所在学校</text><input placeholder='输入学校' disabled value="{{school.name}}"></input></view>
     <view><text class="title">详细地址</text><input placeholder='请输入详细地址'></input></view>
-    <view><text class="title">验证码</text><input placeholder='输入验证码'></input><view class="code">获取验证码</view></view>
+    <view><text class="title">验证码</text><input placeholder='输入验证码'></input><view class="code" bindtap="getCode">{{codeStr}}</view></view>
     <view class="btn"><text>注册</text></view>
     <view class="deal"><radio checked="{{checked}}" color="{{color}}"/>我已阅读并同意<text>《寄件协议》</text></view>
 </view>
+<i-action-sheet visible="{{ visible }}" bind:cancel="maskFlag" show-cancel="{{showCancel}}">
+  <view slot="header">
+    <view class="header2">选择学校</view>
+    <view class="school_list">
+      <block wx:for="{{schoolList}}" wx:key="{{item.id}}">
+        <view bindtap="schoolChange" data-id="{{item.id}}" data-name="{{item.schoolName}}">{{item.schoolName}}</view>
+      </block>
+    </view>
+  </view>
+</i-action-sheet>

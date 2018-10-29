@@ -22,7 +22,7 @@ export default {
           typeof _options.success == 'function' && _options.success.call(this, res.data)
         } else if (res.data.errno == 401) {
           wx.redirectTo({
-            url: '../login/index',
+            url: '../start/index',
           })
         } else {
           typeof _options.success == 'function' && _options.success.call(this, res.data)

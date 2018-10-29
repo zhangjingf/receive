@@ -2,8 +2,8 @@
   "pages": [
     "pages/blank/index",
     "pages/mine/index",
-    "pages/start/index",
     "pages/signIn/index",
+    "pages/start/index",
     "pages/index/index",
     "pages/logs/logs",
     "pages/login/index",

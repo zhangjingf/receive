@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "注册"
+  "navigationBarTitleText": "注册",
+  "usingComponents": {
+    "i-modal": "/components/modal/index",
+    "i-action-sheet": "/components/action-sheet/index"
+  }
 }
