@@ -12,9 +12,6 @@ Page({
       name: ''
     }
   },
-  onLoad: function (options) {
-
-  },
   onShow: function () {
     const self = this;
     common.school({}, function(res) {
@@ -31,13 +28,9 @@ Page({
     })
   },
   name: function (e) {
+    console.log(e)
     this.setData({
       name: e.detail.value
-    })
-  },
-  school: function (e) {
-    this.setData({
-      school: e.detail.value
     })
   },
   detail: function (e) {
@@ -62,7 +55,37 @@ Page({
     })
   },
   submit: function() {
-
+    let param = {
+      phone: this.data.phone,
+      name: this.data.name,
+      code: this.data.code,
+      address: this.data.detail,
+      schoolId: this.data.school.id
+    }
+    console.log(param)
+    let flagArr = []
+    Object.keys(param).forEach(function(index) {
+      flagArr.push(!!param[index])
+    })
+    if (flagArr.includes(false)) {
+      wx.showToast({
+        title: '请填写全部表单',
+        icon: 'none'
+      });
+      return;
+    }
+    common.register(param, function (res) {
+      if (res.code == 0) {
+        wx.navigateTo({
+          url: '../transition/index',
+        });
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
   },
   maskFlag: function() {
     this.setData({

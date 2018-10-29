@@ -60,11 +60,13 @@ Page({
     }
     if (res.userInfo) {
       common.login(param, function (res) {
-        if (res.code == 0) {
+        if (res.data.token) {
           wx.setStorage({
             key: "rider_token",
             data: res.data.token
           })
+        }
+        if (res.code == 0) {
           wx.setStorage({
             key: 'userId',
             data: res.data.userId
