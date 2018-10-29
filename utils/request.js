@@ -24,6 +24,10 @@ export default {
           wx.redirectTo({
             url: '../start/index',
           })
+        } else if (res.data.errno == 2000) {
+          wx.redirectTo({
+            url: '../signIn/index',
+          })
         } else {
           typeof _options.success == 'function' && _options.success.call(this, res.data)
         }
