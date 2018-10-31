@@ -28,7 +28,6 @@ Page({
     })
   },
   name: function (e) {
-    console.log(e)
     this.setData({
       name: e.detail.value
     })
