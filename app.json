@@ -1,19 +1,19 @@
 {
   "pages": [
     "pages/blank/index",
+    "pages/order/index",
     "pages/mine/index",
     "pages/signIn/index",
     "pages/start/index",
     "pages/index/index",
     "pages/logs/logs",
     "pages/login/index",
-    "pages/order/index",
     "pages/transition/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#008CF0",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "代代裹裹侠",
+    "navigationBarTextStyle": "white"
   }
 }

@@ -26,7 +26,9 @@
           <view>订单号：{{item.orderId}}</view>
           <view>订单时间{{item.createTime}}</view>
         </view>
-        <view>取件</view>
+        <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10010}}" catchtap="takeExpress">取件</view>
+        <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10020}}" catchtap="finish">送达</view>
+        <view wx:if="{{item.operationType == 10030}}">回传</view>
       </view>
     </view>
     <view class="item" wx:if="{{item.orderType == 2}}">
@@ -50,9 +52,35 @@
           <view>订单号：{{item.orderId}}</view>
           <view>订单时间：{{item.createTime}}</view>
         </view>
-        <view>取件</view>
+        <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10010}}" catchtap="takeExpress">取件</view>
+        <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10020}}" catchtap="finish">送达</view>
+        <view wx:if="{{item.operationType == 10030}}">回传</view>
       </view>
     </view>
   </block>
 </view>
+<i-action-sheet visible="{{ visible }}" bind:cancel="maskFlag" show-cancel="{{showCancel}}">
+  <view slot="header">
+    <view class="header2">请输入取件码</view>
+    <view class="qujian">
+      <view>取件码:</view><input type="text" bindinput="expresskey"></input>
+    </view>
+    <view class="confirm" bindtap="confirm">确认取件</view>
+  </view>
+</i-action-sheet>
+<i-action-sheet visible="{{ visible1 }}" bind:cancel="maskFlag" show-cancel="{{showCancel}}">
+  <view slot="header">
+    <view class="header2">请回传运单信息</view>
+    <view class="paper">
+      <view class="item1"><view>快递公司</view><view></view></view>
+      <view class="item1"><view>运输单号</view><view></view><view></view></view>
+      <view class="item1"><view>包裹重量</view><view></view><view>kg</view></view>
+      <view class="item1"><view>运费</view><view></view><view>元</view></view>
+      <view class="item1"><view>服务费</view><view></view><view>元</view></view>
+      <view class="item1"><view>小费</view><view></view><view>元</view></view>
+      <view class="item1"><view>合计</view><view></view><view>元</view></view>
+    </view>
+    <view class="confirm" bindtap="submit">确认回传</view>
+  </view>
+</i-action-sheet>
 <nav checkedStatus="{{checkedStatus}}" />

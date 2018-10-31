@@ -74,8 +74,14 @@ App({
                   }
                 })
               } else {
+                wx.navigateBack({
+                  delta: 1
+                })
                 wx.reLaunch({
-                  url: '../order/index'
+                  url: '../order/index',
+                  complete: function (res) {
+                    console.warn(res);
+                  }
                 })
               }
             }

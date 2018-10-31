@@ -16,7 +16,7 @@ class Order {
   }
   listTwo(data, callback) { //待完成
       ajax({
-          url: sendLink() + '/api/riderOrder/searchNeedToPickOrder',
+          url: sendLink() + '/api/riderOrder/searchNeedToFinshedOrder',
           type: 'GET',
           data: data,
           success: function (ret) {
@@ -26,6 +26,32 @@ class Order {
               typeof callback == 'function' && callback.call(this, ret)
           }
       })
+  }
+  handle(data, callback) {
+      ajax({
+          url: sendLink() + '/api/riderOrder/reportToPickOrder',
+          type: 'POST',
+          data: data,
+          success: function (ret) {
+              typeof callback == 'function' && callback.call(this, ret)
+          },
+          error: function (ret) {
+              typeof callback == 'function' && callback.call(this, ret)
+          }
+      })
+  }
+  finish(data, callback) {
+    ajax({
+        url: sendLink() + '/api/riderOrder / reportToFinshedOrder',
+        type: 'GET',
+        data: data,
+        success: function (ret) {
+            typeof callback == 'function' && callback.call(this, ret)
+        },
+        error: function (ret) {
+            typeof callback == 'function' && callback.call(this, ret)
+        }
+    })
   }
 }
 
