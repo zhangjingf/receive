@@ -1,0 +1,79 @@
+.content {
+    padding: 46rpx;
+    background:rgba(0,140,240,1);
+}
+.content>view:nth-child(1) {
+    font-size:28rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+.content>view:nth-child(2) {
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rest {
+    font-size:60rpx;
+    font-family:PingFang-SC-Bold;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+}
+.cash {
+    width:130rpx;
+    height:60rpx;
+    border:1rpx solid rgba(255,255,255,1);
+    border-radius:10rpx;
+    font-size:28rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+.nav {
+    margin-top: 20rpx;
+    height: 100rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:rgba(255,255,255,1);
+    font-size:28rpx;
+    line-height: 42rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+}
+.nav>view {
+    padding-left: 43rpx;
+    flex: 1;
+}
+.nav>view:nth-child(2) {
+    border-left: 1rpx solid rgba(220,220,220,1);
+}
+.card {
+    position: relative;
+    top: 5rpx;
+    margin-right: 20rpx;
+    width:30rpx;
+    height:35rpx;
+}
+.coin {
+    margin-right: 20rpx;
+    width:35rpx;
+    height:31rpx;
+}
+.deal {
+    margin-top: 20rpx;
+    padding: 0 44rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size:28rpx;
+    line-height: 100rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+    background: #ffffff;
+}

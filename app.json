@@ -7,7 +7,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/login/index",
-    "pages/transition/index"
+    "pages/transition/index",
+    "pages/myWallet/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
