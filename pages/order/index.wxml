@@ -81,6 +81,6 @@
       <view class="item1"><view>合计</view><view></view><view>元</view></view>
     </view>
     <view class="confirm" bindtap="submit">确认回传</view>
-  </view> 
+  </view>
 </i-action-sheet>
 <nav checkedStatus="{{checkedStatus}}" />
