@@ -60,9 +60,6 @@ App({
                       key: 'userId',
                       data: res.data.userId
                     })
-                    wx.reLaunch({
-                      url: '../order/index'
-                    })
                   } else if (res.code == 2000) {
                     wx.reLaunch({
                       url: '../signIn/index',
@@ -71,16 +68,6 @@ App({
                     wx.reLaunch({
                       url: '../transition/index'
                     })
-                  }
-                })
-              } else {
-                wx.navigateBack({
-                  delta: 1
-                })
-                wx.reLaunch({
-                  url: '../order/index',
-                  complete: function (res) {
-                    console.warn(res);
                   }
                 })
               }
