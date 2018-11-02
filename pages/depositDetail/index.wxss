@@ -1,10 +1,29 @@
 .status {
+  display: flex;
   padding: 26rpx 30rpx;
   font-size:28rpx;
   font-family:PingFang-SC-Medium;
   font-weight:500;
   color:rgba(0,0,0,1);
   background:rgba(255,255,255,1);
+}
+.left {
+  margin: 20rpx 20rpx 0 0;
+}
+.circle {
+  width:20rpx;
+  height:20rpx;
+  background:rgba(153,153,153,1);
+  border-radius:50%;
+}
+.green {
+  background:rgba(55,207,117,1);
+}
+.line {
+  margin-left: 9rpx;
+  width:1rpx;
+  height:90rpx;
+  background:rgba(153,153,153,1);
 }
 .right>view:nth-child(2) {
   margin-top: 41rpx;
@@ -13,6 +32,9 @@
   padding-top: 12rpx;
   font-size: 22rpx;
   color:rgba(153,153,153,1);
+}
+.success {
+  color:rgba(69,207,125,1);
 }
 .detail {
   margin-top: 20rpx;
