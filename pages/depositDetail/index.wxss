@@ -1,0 +1,32 @@
+.status {
+  padding: 26rpx 30rpx;
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(0,0,0,1);
+  background:rgba(255,255,255,1);
+}
+.right>view:nth-child(2) {
+  margin-top: 41rpx;
+}
+.time {
+  padding-top: 12rpx;
+  font-size: 22rpx;
+  color:rgba(153,153,153,1);
+}
+.detail {
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+  background:rgba(255,255,255,1);
+}
+.detail>view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size:28rpx;
+  line-height: 80rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(0,0,0,1);
+  border-bottom: 1rpx solid rgba(220,220,220,1);
+}

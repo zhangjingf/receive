@@ -1,0 +1,62 @@
+.deposit {
+  margin: 20rpx auto;
+  padding: 74rpx 34rpx 49rpx 34rpx;
+  width: 626rpx;
+  background:rgba(255,255,255,1);
+  border-radius:10px;
+}
+.mount {
+  font-size:30rpx;
+  font-family:PingFang-SC-Bold;
+  font-weight:bold;
+  color:rgba(0,0,0,1);
+}
+.money {
+  padding: 26rpx 0;
+  display: flex;
+  align-items: center;
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  border-bottom: 1rpx solid rgba(242,155,118,1);
+}
+.money input {
+  padding-left: 30rpx;
+  color:rgba(153,153,153,1);
+}
+.sum {
+  margin-top: 18rpx;
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+}
+.submit {
+  margin-top: 68rpx;
+  width:622rpx;
+  height:80rpx;
+  background:rgba(240,240,240,1);
+  border-radius:10rpx;
+  font-size:36rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+}
+.rule {
+  padding: 0 63rpx;
+}
+.rule>view:nth-child(1) {
+  text-align: center;
+  font-size:30rpx;
+  font-family:PingFang-SC-Bold;
+  font-weight:bold;
+  color:rgba(0,0,0,1);
+}
+.rule .content {
+  font-size:26rpx;
+  font-family:PingFang-SC-Bold;
+  font-weight:bold;
+  color:rgba(76,76,76,1);
+}

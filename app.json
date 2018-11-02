@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/depositDetail/index",
+    "pages/deposit/index",
     "pages/order/index",
     "pages/mine/index",
     "pages/signIn/index",

@@ -1,0 +1,20 @@
+<view class="status">
+  <view></view>
+  <view class="right">
+    <view>
+      <view>提现申请成功</view>
+      <view class="time">2018123213</view>
+    </view>
+    <view>
+      <view>提现成功</view>
+      <view class="time">43241e41</view>
+    </view>
+  </view>
+</view>
+<view class="detail">
+  <view><view>交易描述</view><view></view></view>
+  <view><view>提现金额</view><view></view></view>
+  <view><view>状态</view><view></view></view>
+  <view><view>交易流水号</view><view></view></view>
+  <view><view>提现至</view><view></view></view>
+</view>

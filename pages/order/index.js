@@ -9,7 +9,7 @@ Page({
     list: null,
     showCancel: false,
     visible: false,
-    visible1: true
+    visible1: false
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
