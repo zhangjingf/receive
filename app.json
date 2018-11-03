@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/restMoney/index",
     "pages/myRecord/index",
     "pages/depositDetail/index",
     "pages/deposit/index",

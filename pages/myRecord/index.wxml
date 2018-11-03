@@ -1,2 +1,16 @@
-<!--pages/myRecord/index.wxml-->
-<text>pages/myRecord/index.wxml</text>
+<view class="wait">
+  <view class="title"><view>待入账总金额</view><view>¥100</view></view>
+  <view>
+    <view>2018-0-10</view>
+    <view>3单</view>
+    <view>31<i-icon type="enter" size="20" /></view>
+  </view>
+</view>
+<view class="finish">
+  <view class="title"><view>已入账总金额</view><view>¥100</view></view>
+  <view>
+    <view>2018-0-10</view>
+    <view>3单</view>
+    <view>31<i-icon type="enter" size="20" /></view>
+  </view>
+</view>

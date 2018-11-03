@@ -1,1 +1,25 @@
-/* pages/myRecord/index.wxss */
+.wait, .finish {
+  padding: 0 28rpx;
+  margin-top: 20rpx;
+  background:rgba(255,255,255,1);
+}
+.wait>view , .finish>view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 80rpx;
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(74,74,74,1);
+  border-bottom: 1rpx solid rgba(220,220,220,1);
+}
+.wait>view:last-child, .finish>view:last-child {
+  border-bottom: none;
+}
+.title {
+  font-size:30rpx !important;
+  font-family:PingFang-SC-Bold !important;
+  font-weight:bold !important;
+  color:rgba(0,0,0,1) !important;
+}
