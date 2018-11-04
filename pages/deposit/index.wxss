@@ -60,3 +60,8 @@
   font-weight:bold;
   color:rgba(76,76,76,1);
 }
+
+.active {
+  color: rgba(255, 255, 255, 1) !important;
+  background: rgba(0, 140, 240, 1) !important;
+}

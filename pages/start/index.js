@@ -68,8 +68,8 @@ Page({
         }
         if (res.code == 0) {
           wx.setStorage({
-            key: 'userId',
-            data: res.data.userId
+            key: 'riderId',
+            data: res.data.riderId
           })
           wx.reLaunch({
             url: '../order/index'

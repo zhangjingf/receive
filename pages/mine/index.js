@@ -4,9 +4,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '我的',
     })
-    this.setData({
-      checkedStatus: 'mine'
-    })
   },
   goWallet: function () {
     wx.navigateTo({

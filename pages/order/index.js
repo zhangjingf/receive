@@ -6,17 +6,16 @@ Page({
     index11: 5,
     index2: 0,
     index22: 5,
-    list: null,
+    list: [],
     showCancel: false,
     visible: false,
-    visible1: false
+    visible1: false,
+    numWait: 0,
+    numFinish: 0
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '订单',
-    })
-    this.setData({
-      checkedStatus: 'order'
     })
   },
   onShow: function () {
@@ -25,7 +24,11 @@ Page({
   handleChange: function({detail}) {
     this.setData({
       current: detail.key,
-      list: null
+      list: [],
+      index1: 0,
+      index11: 5,
+      index2: 0,
+      index22: 5,
     })
     if(detail.key == 'tab2') {
       this.listOne();
@@ -35,20 +38,34 @@ Page({
   },
   listOne: function () {
     const self = this;
+    wx.showLoading({
+      title: '加载中'
+    })
     order.listOne({startIndex: this.data.index1, endIndex: this.data.index11}, function (res){
-      if (res.code == 0) {
+      wx.hideLoading();
+      if (res.code == 0 && res.data) {
+        let dataList = self.data.list.concat(res.data);
         self.setData({
-          list: res.data
+          list: dataList,
+          numWait: dataList.length,
+          loadMoreOne: res.data.length < 5 ? true : false
         })
       }
     })
   },
   listTwo: function () {
     const self = this;
+    wx.showLoading({
+      title: '加载中'
+    })
     order.listTwo({startIndex: this.data.index2, endIndex: this.data.index22}, function (res) {
-      if (res.code == 0) {
+      wx.hideLoading();
+      if (res.code == 0 && res.data) {
+        let dataList = self.data.list.concat(res.data);
         self.setData({
-          list: res.data
+          list: dataList,
+          numFinish: dataList.length,
+          loadMoreTwo: res.data.length < 5 ? true : false
         })
       }
     })
@@ -110,5 +127,23 @@ Page({
         })
       }
     })
+  },
+  onReachBottom: function () {
+    if (this.data.current == 'tab2') {
+      if (this.data.loadMoreOne) return;
+      this.setData({
+        index1: this.data.index11,
+        index11: this.data.index11 + 5
+      })
+      this.listOne()
+    }
+    if (this.data.current == 'tab3') {
+      if (this.data.loadMoreTwo) return;
+      this.setData({
+        index1: this.data.index22,
+        index11: this.data.index22 + 5
+      })
+      this.listTwo()
+    }
   }
 })

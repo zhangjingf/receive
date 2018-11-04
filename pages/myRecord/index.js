@@ -1,66 +1,49 @@
-// pages/myRecord/index.js
+import rider from '../../services/rider'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    waitList: null,
+    finishList: null,
+    wait: 0,
+    finish: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    const self = this;
+    rider.queryAccountOfList({}, function(res) {
+      if (res.code == 0) {
+        if (res.data.length > 0) {
+          let list1 = [];
+          let list2 = [];
+          let sum1 = 0;
+          let sum2 = 0;
+          for (let index in res.data) {
+            if (res.data[index].status == 0) {
+              list1.push(res.data[index])
+              sum1 += Number(res.data[index].totalIncomeAmount)
+            } else {
+              list2.push(res.data[index])
+              sum2 += Number(res.data[index].totalIncomeAmount)
+            }
+          }
+          self.setData({
+            waitList: list1,
+            finishList: list2,
+            wait: sum1,
+            finish: sum2
+          })
+        }
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  godetail: function (e) {
+    let id = e.target.dataset.id || '';
+    if (!id) return;
+    wx.navigateTo({
+      url: '../recordDetail/index?id='+ id,
+    })
   }
 })

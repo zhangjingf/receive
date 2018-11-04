@@ -1,12 +1,12 @@
 <view class="content">
     <view>可用余额</view>
     <view>
-        <view class="rest">520</view>
-        <view class="cash">提现</view>
+        <view class="rest">{{availableBalance}}</view>
+        <view bindtap="goDeposit" class="cash">提现</view>
     </view>
 </view>
 <view class="nav">
-    <view><image class="card" src="../../images/card.png"></image>账单</view>
-    <view><image class="coin" src="../../images/coin.png"></image>余额流水</view>
+    <view bindtap="goRecord"><image class="card" src="../../images/card.png"></image>账单</view>
+    <view bindtap="goRestMoney"><image class="coin" src="../../images/coin.png"></image>余额流水</view>
 </view>
-<view class="deal"><view>交易密码</view><view><i-icon type="enter" /></view></view>
+<!-- <view class="deal"><view>交易密码</view><view><i-icon type="enter" /></view></view> -->

@@ -1,0 +1,41 @@
+<view class="detail">
+  <view>
+    <view>交易类型</view>
+    <view></view>
+  </view>
+  <view>
+    <view>交易描述</view>
+    <view></view>
+  </view>
+  <view>
+    <view>金额</view>
+    <view></view>
+  </view>
+  <view>
+    <view>可用余额</view>
+    <view></view>
+  </view>
+  <view>
+    <view>时间</view>
+    <view></view>
+  </view>
+  <view>
+    <view>状态</view>
+    <view></view>
+  </view>
+  <view>
+    <view>交易流水号</view>
+    <view></view>
+  </view>
+  <view>
+    <view>备注</view>
+    <view></view>
+  </view>
+</view>
+<view class="detail record">
+  <view>
+    <view>账单详情</view>
+    <i-icon type="enter" size="20" />
+  </view>
+</view>
+

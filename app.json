@@ -1,10 +1,13 @@
 {
   "pages": [
+    "pages/order/index",
+    "pages/recordDetail/index",
+    "pages/dealDetail/index",
+    "pages/orderDetail/index",
     "pages/restMoney/index",
     "pages/myRecord/index",
     "pages/depositDetail/index",
     "pages/deposit/index",
-    "pages/order/index",
     "pages/mine/index",
     "pages/signIn/index",
     "pages/start/index",
@@ -19,5 +22,24 @@
     "navigationBarBackgroundColor": "#008CF0",
     "navigationBarTitleText": "代代裹裹侠",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#3B86F7",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/order/index",
+        "text": "订单",
+        "iconPath": "./images/nav_02.png",
+        "selectedIconPath": "./images/nav_22.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "images/nav_03.png",
+        "selectedIconPath": "images/nav_33.png"
+      }
+    ]
   }
 }

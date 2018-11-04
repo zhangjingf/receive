@@ -23,3 +23,11 @@
   font-weight:bold !important;
   color:rgba(0,0,0,1) !important;
 }
+.center {
+  flex: 1;
+  text-align: center;
+}
+.right {
+  width: 200rpx;
+  text-align: right;
+}

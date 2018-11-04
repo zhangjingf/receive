@@ -1,1 +1,57 @@
-/* pages/restMoney/index.wxss */
+.header {
+  padding: 35rpx 0 44rpx 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 1);
+}
+
+.header>view:nth-child(1) {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(74, 74, 74, 1);
+}
+
+.header>view:nth-child(2) {
+  padding-top: 44rpx;
+  font-size: 50rpx;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+}
+.content {
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+  background: rgba(255, 255, 255, 1);
+}
+.item {
+  padding: 23rpx 0 21rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid rgba(220, 220, 220, 1);
+}
+.item>view:nth-child(2) {
+  flex: 1;
+  text-align: right;
+}
+.num {
+  font-size:22rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(153, 153, 153, 1);
+}
+.time {
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(0, 0, 0, 1);
+}
+.distance {
+  padding-top: 12rpx;
+}
+.type {
+  padding-left: 17rpx;
+}
+.color {
+  color: #E60012;
+}

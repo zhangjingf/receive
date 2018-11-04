@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "余额流水",
+  "navigationBarTitleText": "交易详情",
   "usingComponents": {
     "i-icon": "/components/icon/index"
   }

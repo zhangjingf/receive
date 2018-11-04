@@ -1,7 +1,7 @@
 <i-tabs current="{{ current }}" bindchange="handleChange" color="#008CF0">
     <!-- <i-tab key="tab1" title="待接单"></i-tab> -->
-    <i-tab key="tab2" title="待取件"></i-tab>
-    <i-tab key="tab3" title="待完成"></i-tab>
+    <i-tab key="tab2" title="待取件({{numWait}})"></i-tab>
+    <i-tab key="tab3" title="待完成({{numFinish}})"></i-tab>
 </i-tabs>
 <view class="content">
   <block wx:for="{{list}}" wx:key="{{item.orderId}}">
@@ -83,4 +83,3 @@
     <view class="confirm" bindtap="submit">确认回传</view>
   </view>
 </i-action-sheet>
-<nav checkedStatus="{{checkedStatus}}" />

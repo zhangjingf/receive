@@ -16,4 +16,3 @@
   <view class="content">我的建议</view>
   <i-icon type="enter" size="20" />
 </view>
-<nav checkedStatus="{{checkedStatus}}" />

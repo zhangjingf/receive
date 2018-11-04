@@ -1,0 +1,39 @@
+
+<view class="title">结算金额(元)</view>
+<view class="money">{{list.actualPrice}}</view>
+<view class="fees">
+  <view>
+    <view>服务类型</view>
+    <view>{{list.orderTypeCn}}</view>
+  </view>
+  <view wx:if="{{list.orderType != 1}}">
+    <view>运费</view>
+    <view>{{list.expressPrice}}</view>
+  </view>
+  <view>
+    <view>服务费</view>
+    <view>{{list.servicePrice}}</view>
+  </view>
+  <view wx:if="{{list.orderType != 1}}">
+    <view>小费</view>
+    <view>{{list.tipPrice}}</view>
+  </view>
+  <view>
+    <view>佣金</view>
+    <view>{{list.incomeAmount}}</view>
+  </view>
+</view>
+<view class="order">
+  <view>
+    <view>订单编号</view>
+    <view class="color">{{list.orderId}}</view>
+  </view>
+  <view>
+    <view>订单创建时间</view>
+    <view class="color">{{list.createTimeFormat}}</view>
+  </view>
+  <view>
+    <view>订单完成时间</view>
+    <view class="color"></view>
+  </view>
+</view>

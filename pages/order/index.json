@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "nav": "/components/nav/nav",
     "i-tabs": "/components/tabs/index",
     "i-tab": "/components/tab/index",
     "i-modal": "/components/modal/index",

@@ -1,2 +1,21 @@
-<!--pages/restMoney/index.wxml-->
-<text>pages/restMoney/index.wxml</text>
+<view class="header">
+  <view>结算金额(元)</view>
+  <view>250</view>
+</view>
+<view class="content">
+  <block wx:for="{{recordList}}" wx:key="{{item.id}}">
+    <view class="item">
+      <view>
+        <view><text class="time">{{item.createDayFormat}}{{item.typeCn}}</text><text class="num type">{{item.statusCn}}</text></view>
+        <view class="num distance">{{item.createTimeFormat}}</view>
+      </view>
+      <view>
+        <view wx:if="{{item.availableBalanceAfter < item.availableBalanceAfter}}" class="time color">-{{item.amount}}</view>
+        <view wx:if="{{item.availableBalanceAfter >= item.availableBalanceAfter}}" class="time">{{item.amount}}
+        </view>
+        <view class="num distance">余额{{item.availableBalanceAfter}}</view>
+      </view>
+      <i-icon type="enter" size="20" />
+    </view>
+  </block>
+</view>

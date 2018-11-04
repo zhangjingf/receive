@@ -1,66 +1,37 @@
-// pages/deposit/index.js
+import rider from '../../services/rider'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    money: 0,
+    availableBalance: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    const self = this;
+    rider.accountInfo({}, function (res) {
+      if (res.code == '0') {
+        self.setData({
+          availableBalance: res.data.availableBalance
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  money: function (e) {
+    this.setData({
+      money: e.detail.value,
+      status: e.detail.value.length > 0 ? 'active' : ''
+    })
   },
+  submit: function () {
+    rider.transferOut({
+      transferAmmount: this.data.money
+    }, function (res) {
+      if (res.code == 0) {
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
   }
 })
