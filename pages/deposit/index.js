@@ -25,7 +25,10 @@ Page({
       transferAmmount: this.data.money
     }, function (res) {
       if (res.code == 0) {
-
+        wx.showToast({
+          title: '提现成功',
+          icon: 'success'
+        })
       } else {
         wx.showToast({
           title: res.msg,

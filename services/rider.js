@@ -42,7 +42,7 @@ class Rider {
         })
     }
     
-    queryAccountOfOrders(data, callback) { //账单列表
+    queryAccountOfOrders(data, callback) { //账单详情
       ajax({
         url: sendLink() + '/api/rider/queryAccountOfOrders',
         type: 'POST',
@@ -55,7 +55,7 @@ class Rider {
         }
       })
     }
-    queryAccountOfList(data, callback) { //账单详情
+    queryAccountOfList(data, callback) { //账单列表
       ajax({
         url: sendLink() + '/api/rider/queryAccountOfList',
         type: 'POST',
