@@ -54,7 +54,7 @@
         </view>
         <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10010}}" catchtap="takeExpress">取件</view>
         <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10020}}" catchtap="finish">送达</view>
-        <view wx:if="{{item.operationType == 10030}}">回传</view>
+        <view catchtap='transfer' wx:if="{{item.operationType == 10030}}">回传</view>
       </view>
     </view>
   </block>

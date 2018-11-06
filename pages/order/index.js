@@ -128,6 +128,11 @@ Page({
       }
     })
   },
+  transfer: function () {
+    this.setData({
+      visible1: true
+    })
+  },
   onReachBottom: function () {
     if (this.data.current == 'tab2') {
       if (this.data.loadMoreOne) return;

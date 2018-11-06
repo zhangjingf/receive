@@ -30,7 +30,7 @@ class Order {
   handle(data, callback) {
       ajax({
           url: sendLink() + '/api/riderOrder/reportToPickOrder',
-          type: 'GET',
+          type: 'POST',
           data: data,
           success: function (ret) {
               typeof callback == 'function' && callback.call(this, ret)
@@ -42,8 +42,8 @@ class Order {
   }
   finish(data, callback) {
     ajax({
-        url: sendLink() + '/api/riderOrder / reportToFinshedOrder',
-        type: 'GET',
+        url: sendLink() + '/api/riderOrder/reportToFinshedOrder',
+        type: 'POST',
         data: data,
         success: function (ret) {
             typeof callback == 'function' && callback.call(this, ret)
