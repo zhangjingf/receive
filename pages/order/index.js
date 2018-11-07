@@ -150,5 +150,19 @@ Page({
       })
       this.listTwo()
     }
+  },
+  submit: function () {
+    let param = {
+      orderId: '',
+      expressNumber: '',
+      expressName: '',
+      expressPrice: '',
+      packageKg: ''
+    }
+    rider.turnOrder(param, function (res) {
+      if (res.code == 0) {
+        this.listTwo();
+      }
+    })
   }
 })
