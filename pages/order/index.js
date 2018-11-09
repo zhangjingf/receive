@@ -151,6 +151,7 @@ Page({
       this.listTwo()
     }
   },
+<<<<<<< HEAD
   takeExpressOne: function (e) {
     order.handle({ orderId: e.target.dataset.id }, function (res) {
       if (res.code === 0) {
@@ -164,6 +165,19 @@ Page({
           title: res.msg,
           icon: 'error'
         })
+=======
+  submit: function () {
+    let param = {
+      orderId: '',
+      expressNumber: '',
+      expressName: '',
+      expressPrice: '',
+      packageKg: ''
+    }
+    rider.turnOrder(param, function (res) {
+      if (res.code == 0) {
+        this.listTwo();
+>>>>>>> 394f7e95f26d48a051f744fcdfaa08821fd4cf64
       }
     })
   }
