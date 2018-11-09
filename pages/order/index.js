@@ -150,5 +150,21 @@ Page({
       })
       this.listTwo()
     }
+  },
+  takeExpressOne: function (e) {
+    order.handle({ orderId: e.target.dataset.id }, function (res) {
+      if (res.code === 0) {
+        wx.showToast({
+          title: '取件成功',
+          icon: 'success'
+        })
+        this.listOne()
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'error'
+        })
+      }
+    })
   }
 })
