@@ -31,7 +31,6 @@ Page({
       index11: 5,
       index2: 0,
       index22: 5,
-      visible1: true
     })
     if(detail.key == 'tab2') {
       this.listOne();
@@ -186,7 +185,7 @@ Page({
       expressPrice: this.data.transferData.expressPrice,
       packageKg: this.data.transferData.packageKg
     }
-    rider.turnOrder(param, function (res) {
+    order.turnOrder(param, function (res) {
       if (res.code == 0) {
         this.listTwo();
       } else {
@@ -196,6 +195,9 @@ Page({
         })
       }
     })
+  },
+  express: function (e) {
+    this.getExpress(e.detail.value)
   },
   scan: function () {
     wx.scanCode({
@@ -212,7 +214,7 @@ Page({
       number: val
     }, function (res) {
       if (res.errno == 0 && res.data) {
-        this.setData({
+        self.setData({
           expressName: res.data.expName,
           expressNumber: res.data.number
         })
