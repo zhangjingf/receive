@@ -1,4 +1,5 @@
 import order from '../../services/order';
+import common from '../../services/common.js';
 Page({
   data: {
     current: 'tab2',
@@ -11,7 +12,8 @@ Page({
     visible: false,
     visible1: false,
     numWait: 0,
-    numFinish: 0
+    numFinish: 0,
+    transferData: null
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -29,6 +31,7 @@ Page({
       index11: 5,
       index2: 0,
       index22: 5,
+      visible1: true
     })
     if(detail.key == 'tab2') {
       this.listOne();
@@ -128,7 +131,15 @@ Page({
       }
     })
   },
-  transfer: function () {
+  transfer: function (e) {
+    let orderId = e.target.dataset.id;
+    for (let index in this.data.list) {
+      if (this.data.list[index].orderId == orderId) {
+        this.setData({
+          transferData: this.data.list[index]
+        })
+      }
+    }
     this.setData({
       visible1: true
     })
@@ -151,7 +162,6 @@ Page({
       this.listTwo()
     }
   },
-<<<<<<< HEAD
   takeExpressOne: function (e) {
     order.handle({ orderId: e.target.dataset.id }, function (res) {
       if (res.code === 0) {
@@ -165,19 +175,52 @@ Page({
           title: res.msg,
           icon: 'error'
         })
-=======
+      }
+    })
+  },
   submit: function () {
     let param = {
-      orderId: '',
-      expressNumber: '',
-      expressName: '',
-      expressPrice: '',
-      packageKg: ''
+      orderId: this.data.transferData.orderId,
+      expressNumber: this.data.expressNumber,
+      expressName: this.data.expressName,
+      expressPrice: this.data.transferData.expressPrice,
+      packageKg: this.data.transferData.packageKg
     }
     rider.turnOrder(param, function (res) {
       if (res.code == 0) {
         this.listTwo();
->>>>>>> 394f7e95f26d48a051f744fcdfaa08821fd4cf64
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+  scan: function () {
+    wx.scanCode({
+      success: (res) => {
+        if (res.result) {
+          this.getExpress(res.result)
+        }
+      }
+    })
+  },
+  getExpress: function (val) {
+    const self = this;
+    common.getExpress({
+      number: val
+    }, function (res) {
+      if (res.errno == 0 && res.data) {
+        this.setData({
+          expressName: res.data.expName,
+          expressNumber: res.data.number
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
       }
     })
   }

@@ -147,11 +147,17 @@ image {
     color:rgba(102, 102, 102, 1);
     border-bottom: 1rpx solid rgba(220, 220, 220, 1);
 }
+.paper input {
+  padding-left: 20rpx;
+  flex: 1;
+}
 .paper .item1>view:nth-child(1)  {
-    width: 170rpx;
+    width: 150rpx;
+    display: flex;
+    justify-content: space-between;
 }
 .paper .item2>view:nth-child(2) {
     flex:1;
-    padding-left: 30rpx;
+    padding-left: 20rpx;
     color:rgba(0, 0, 0, 1);
 }
