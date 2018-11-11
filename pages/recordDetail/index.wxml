@@ -1,7 +1,7 @@
 <view class="part_one">
-  <view>2019-1-1完成1单</view>
+  <view>{{date}}完成{{orderNum}}单</view>
   <view>结算金额</view>
-  <view>30</view>
+  <view>{{sum}}</view>
 </view>
 <view class="part_two">
   <view>
@@ -9,9 +9,9 @@
     <view>结算金额(元)</view>
   </view>
   <block wx:for="{{list}}" wx:key="{{item.id}}">
-    <view bindtap="goOrderDetail" data-id="{{item.id}}">
+    <view bindtap="goOrderDetail" data-id="{{item.idString}}">
       <view>{{item.orderTypeCn}}</view>
-      <view><i-icon type="enter" size="20" /></view>
+      <view>{{item.actualPrice}}<i-icon type="enter" size="20" /></view>
     </view>
   </block>
 </view>

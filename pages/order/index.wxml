@@ -4,6 +4,7 @@
     <i-tab key="tab3" title="待完成({{numFinish}})"></i-tab>
 </i-tabs>
 <view class="content">
+  <view class="noorder" wx:if="{{list.length == 0}}">暂无订单</view>
   <block wx:for="{{list}}" wx:key="{{item.orderId}}">
     <view class="item" wx:if="{{item.orderType == 1}}">
       <view class="header">
@@ -12,7 +13,7 @@
         <view>¥{{item.actualPrice}}</view>
       </view>
       <view class="info">
-        <view><view>{{item.useName}} {{item.userPhone}}</view><image src="../../images/phone.png"></image></view>
+        <view><view>{{item.userName}} {{item.userPhone}}</view><image src="../../images/phone.png" bindtap='call' data-phone="{{item.userPhone}}"></image></view>
         <view>{{item.userAddress}}</view>
       </view>
       <view class="express">
@@ -38,14 +39,14 @@
         <view>¥{{item.actualPrice}}</view>
       </view>
       <view class="info">
-        <view>{{item.useName}} {{item.userPhone}} <image src="../../images/phone.png"></image></view>
+        <view>{{item.userName}} {{item.userPhone}} <image src="../../images/phone.png" data-phone="{{item.userPhone}}" bindtap='call'></image></view>
         <view>{{item.userAddress}}</view>
         <view>{{item.remark}}</view>
       </view>
       <view class="info">
-        <view>{{item.receiverName}} {{item.receiverPhone}} <image src="../../images/phone.png"></image></view>
+        <view>{{item.receiverName}} {{item.receiverPhone}} <image src="../../images/phone.png" data-phone="{{item.receiverPhone}}" bindtap="call"></image></view>
         <view>{{item.receiverAddress}}</view>
-        <view><text>物品</text><text>{{item.pkgType}}</text></view>
+        <view><text>物品</text><text> {{item.pkgType}}</text></view>
       </view>
       <view class="order">
         <view>
@@ -55,6 +56,8 @@
         <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10010}}" catchtap="takeExpress">取件</view>
         <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10020}}" catchtap="finish">送达</view>
         <view data-id="{{item.orderId}}" catchtap='transfer' wx:if="{{item.operationType == 10030}}">回传</view>
+        <view wx:if="{{item.operationType == 10040}}">待确认</view>
+        <view wx:if="{{item.operationType == 10050}}">待支付</view>
       </view>
     </view>
   </block>
@@ -72,10 +75,10 @@
   <view slot="header">
     <view class="header2">请回传运单信息</view>
     <view class="paper">
-      <view class="item1"><view><text>快</text><text>递</text><text>公</text><text>司</text></view><view>{{expressName}}</view></view>
+      <view class="item1"><view><text>快</text><text>递</text><text>公</text><text>司</text></view><input placeholder='请输入快递公司' bindinput='company' value='{{expressName}}'></input></view>
       <view class="item1"><view><text>运</text><text>输</text><text>单</text><text>号</text></view><input bindinput="express" type="number" placeholder='请输入单号'></input><view></view></view>
-      <view class="item1"><view><text>包</text><text>裹</text><text>重</text><text>量</text></view><view></view><view>{{transferData.pkgSize}}</view></view>
-      <!-- <view class="item1"><view>运费</view><view></view><view>元</view></view> -->
+      <view class="item1"><view><text>包</text><text>裹</text><text>重</text><text>量</text></view><input placeholder='请输入包裹重量' bindinput='weight'></input><view>kg</view></view>
+      <view class="item1"><view><text>运</text><text>费</text></view><input bindinput='yunfee' placeholder='请输入运费'></input><view>元</view></view>
       <view class="item1"><view><text>服</text><text>务</text><text>费</text></view><view>{{transferData.servicePrice}}</view><view>元</view></view>
       <view class="item1"><view><text>小</text><text>费</text></view><view>{{transferData.tipPrice}}</view><view>元</view></view>
       <view class="item1"><view><text>合</text><text>计</text></view><view>{{transferData.actualPrice}}</view><view>元</view></view>

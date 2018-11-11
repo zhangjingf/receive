@@ -66,6 +66,19 @@ class Order {
       }
     })
   }
+  count(data, callback) {
+    ajax({
+      url: sendLink() + '/api/riderOrder/getOrderGroupCount',
+      type: 'GET',
+      data: data,
+      success: function (ret) {
+        typeof callback == 'function' && callback.call(this, ret)
+      },
+      error: function (ret) {
+        typeof callback == 'function' && callback.call(this, ret)
+      }
+    })
+  }
 }
 
 export default new Order

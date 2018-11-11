@@ -8,6 +8,7 @@ Page({
     rider.fundsAccountRecord({type: 0}, function (res) {
       if (res.code == 0 && res.data) {
           self.setData({
+            totalAmount: res.data.totalAmount,
             recordList: res.data
           })
       }

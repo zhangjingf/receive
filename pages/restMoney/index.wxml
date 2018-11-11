@@ -1,6 +1,6 @@
 <view class="header">
   <view>结算金额(元)</view>
-  <view>250</view>
+  <view>{{totalAmount}}</view>
 </view>
 <view class="content">
   <block wx:for="{{recordList}}" wx:key="{{item.id}}">

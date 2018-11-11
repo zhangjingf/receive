@@ -1,7 +1,8 @@
 import rider from '../../services/rider'
 Page({
   data: {
-    list: []
+    list: [],
+    orderNum:0
   },
   onLoad: function (options) {
     const self = this;
@@ -9,9 +10,12 @@ Page({
       rider.queryAccountOfOrders({
         accountOfId: options.id
       }, function (res) {
-        if (res.code == 0 && res.data) {
+        if (res.code == 0) {
           self.setData({
-            list: res.data
+            list: res.data.orderList,
+            sum: res.data.totalAmount,
+            date: res.data.date,
+            orderNum: res.data.totalOrder
           })
         } else {
           wx.showToast({

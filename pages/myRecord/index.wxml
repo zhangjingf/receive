@@ -2,9 +2,9 @@
   <view class="title"><view>待入账总金额</view><view>¥{{wait}}</view></view>
   <block wx:for="{{waitList}}" wx:key="{{item.id}}">
     <view>
-      <view>{{item.accountOfTimeFormat}}</view>
+      <view>{{item.orderDayFormat}}</view>
       <view class="center">{{item.totalOrder}}单</view>
-      <view bindtap="godetail" class="right" data-id="{{item.idString}}">{{item.totalIncomeAmmount}}</view>
+      <view bindtap="godetail" class="right" data-id="{{item.idString}}">{{item.totalIncomeAmount}}</view>
       <i-icon bindtap="godetail" data-id="{{item.idString}}" type="enter" size="20" />
     </view>
   </block>
@@ -13,9 +13,9 @@
   <view class="title"><view>已入账总金额</view><view>¥{{finish}}</view></view>
   <block wx:for="{{finishList}}" wx:key="{{item.id}}">
     <view>
-      <view>{{item.accountOfTimeFormat}}</view>
+      <view>{{item.orderDayFormat}}</view>
       <view class="center">{{item.totalOrder}}单</view>
-      <view bindtap="godetail" data-id="{{item.idString}}" class="right">{{item.totalIncomeAmmount}}</view>
+      <view bindtap="godetail" data-id="{{item.idString}}" class="right">{{item.totalIncomeAmount}}</view>
       <i-icon bindtap="godetail" data-id="{{item.idString}}" type="enter" size="20" />
     </view>
   </block>

@@ -22,6 +22,7 @@ Page({
   },
   onShow: function () {
     this.listOne()
+    this.count()
   },
   handleChange: function({detail}) {
     this.setData({
@@ -45,11 +46,13 @@ Page({
     })
     order.listOne({startIndex: this.data.index1, endIndex: this.data.index11}, function (res){
       wx.hideLoading();
-      if (res.code == 0 && res.data) {
-        let dataList = self.data.list.concat(res.data);
+      self.setData({
+        visible: false
+      })
+      if (res.code == 0 && res.data.orderList) {
+        let dataList = self.data.list.concat(res.data.orderList);
         self.setData({
           list: dataList,
-          numWait: dataList.length,
           loadMoreOne: res.data.length < 5 ? true : false
         })
       }
@@ -62,12 +65,22 @@ Page({
     })
     order.listTwo({startIndex: this.data.index2, endIndex: this.data.index22}, function (res) {
       wx.hideLoading();
-      if (res.code == 0 && res.data) {
-        let dataList = self.data.list.concat(res.data);
+      if (res.code == 0 && res.data.orderList) {
+        let dataList = self.data.list.concat(res.data.orderList);
         self.setData({
           list: dataList,
-          numFinish: dataList.length,
           loadMoreTwo: res.data.length < 5 ? true : false
+        })
+      }
+    })
+  },
+  count: function() {
+    let self = this;
+    order.count({}, function(res) {
+      if (res.code == 0 && res.data) {
+        self.setData({
+          numWait: res.data['10010'],
+          numFinish: res.data['10020']
         })
       }
     })
@@ -104,7 +117,13 @@ Page({
           title: '取件成功',
           icon: 'success'
         })
-        this.listOne()
+        self.setData({
+          list: [],
+          index1: 0,
+          index11: 5
+        })
+        self.count()
+        self.listOne()
       } else {
         wx.showToast({
           title: res.msg,
@@ -121,6 +140,12 @@ Page({
           title: '送达成功',
           icon: 'success'
         })
+        self.setData({
+          list: [],
+          index2: 0,
+          index22: 5
+        })
+        self.count();
         self.listTwo();
       } else {
         wx.showToast({
@@ -155,20 +180,27 @@ Page({
     if (this.data.current == 'tab3') {
       if (this.data.loadMoreTwo) return;
       this.setData({
-        index1: this.data.index22,
-        index11: this.data.index22 + 5
+        index2: this.data.index22,
+        index22: this.data.index22 + 5
       })
       this.listTwo()
     }
   },
   takeExpressOne: function (e) {
+    let self = this;
     order.handle({ orderId: e.target.dataset.id }, function (res) {
       if (res.code === 0) {
         wx.showToast({
           title: '取件成功',
           icon: 'success'
         })
-        this.listOne()
+        self.setData({
+          list: [],
+          index1: 0,
+          index11: 5
+        })
+        self.count()
+        self.listOne()
       } else {
         wx.showToast({
           title: res.msg,
@@ -182,12 +214,20 @@ Page({
       orderId: this.data.transferData.orderId,
       expressNumber: this.data.expressNumber,
       expressName: this.data.expressName,
-      expressPrice: this.data.transferData.expressPrice,
-      packageKg: this.data.transferData.packageKg
+      expressPrice: this.data.expressPrice,
+      packageKg: this.data.weight
     }
+    let self = this;
     order.turnOrder(param, function (res) {
       if (res.code == 0) {
-        this.listTwo();
+        self.setData({
+          list: [],
+          visible1: false,
+          index2: 0,
+          index22: 5
+        })
+        self.count();
+        self.listTwo();
       } else {
         wx.showToast({
           title: res.msg,
@@ -197,7 +237,10 @@ Page({
     })
   },
   express: function (e) {
-    this.getExpress(e.detail.value)
+    //this.getExpress(e.detail.value)
+    this.setData({
+      expressNumber: e.detail.value
+    })
   },
   scan: function () {
     wx.scanCode({
@@ -210,8 +253,9 @@ Page({
   },
   getExpress: function (val) {
     const self = this;
+    if(!val) return;
     common.getExpress({
-      number: val
+      'number': val
     }, function (res) {
       if (res.errno == 0 && res.data) {
         self.setData({
@@ -224,6 +268,26 @@ Page({
           icon: 'none'
         })
       }
+    })
+  },
+  call: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: e.target.dataset.phone
+    })
+  },
+  weight: function (e) {
+    this.setData({
+      weight: e.detail.value
+    })
+  },
+  yunfee: function (e) {
+    this.setData({
+      expressPrice: e.detail.value
+    })
+  },
+  company: function (e) {
+    this.setData({
+      expressName: e.detail.value
     })
   }
 })

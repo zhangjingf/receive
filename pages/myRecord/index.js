@@ -27,8 +27,8 @@ Page({
           self.setData({
             waitList: list1,
             finishList: list2,
-            wait: sum1,
-            finish: sum2
+            wait: sum1.toFixed(2),
+            finish: sum2.toFixed(2)
           })
         }
       } else {

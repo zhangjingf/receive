@@ -30,10 +30,10 @@
   </view>
   <view>
     <view>订单创建时间</view>
-    <view class="color">{{list.createTimeFormat}}</view>
+    <view class="color">{{list.orderCreateTimeFormat}}</view>
   </view>
   <view>
     <view>订单完成时间</view>
-    <view class="color"></view>
+    <view class="color">{{list.orderCompleteTimeFormat}}</view>
   </view>
 </view>
