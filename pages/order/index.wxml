@@ -44,7 +44,7 @@
         <view>{{item.remark}}</view>
       </view>
       <view class="info">
-        <view>{{item.receiverName}} {{item.receiverPhone}} <image src="../../images/phone.png" data-phone="{{item.receiverPhone}}" bindtap="call"></image></view>
+        <view>{{item.receiverName}} {{item.receiverPhone}}</view>
         <view>{{item.receiverAddress}}</view>
         <view><text>物品</text><text> {{item.pkgType}}</text></view>
       </view>

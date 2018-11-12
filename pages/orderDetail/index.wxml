@@ -1,6 +1,6 @@
 
 <view class="title">结算金额(元)</view>
-<view class="money">{{list.actualPrice}}</view>
+<view class="money">{{list.payPrice}}</view>
 <view class="fees">
   <view>
     <view>服务类型</view>

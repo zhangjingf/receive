@@ -21,6 +21,11 @@ Page({
     })
   },
   onShow: function () {
+    this.setData({
+      index1: 0,
+      index11: 5,
+      list: []
+    })
     this.listOne()
     this.count()
   },
@@ -94,7 +99,8 @@ Page({
   takeExpress: function (e) {
     this.setData({
       gotId: e.target.dataset.id,
-      visible: true
+      visible: true,
+      expressNumber: ''
     })
   },
   expresskey: function (e) {
@@ -165,7 +171,11 @@ Page({
       }
     }
     this.setData({
-      visible1: true
+      visible1: true,
+      expressNumber: '',
+      expressName: '',
+      expressPrice: '',
+      packageKg: ''
     })
   },
   onReachBottom: function () {

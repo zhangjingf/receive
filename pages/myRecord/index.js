@@ -10,18 +10,18 @@ Page({
     const self = this;
     rider.queryAccountOfList({}, function(res) {
       if (res.code == 0) {
-        if (res.data.length > 0) {
+        if (res.data.records.length > 0) {
           let list1 = [];
           let list2 = [];
           let sum1 = 0;
           let sum2 = 0;
-          for (let index in res.data) {
-            if (res.data[index].status == 0) {
-              list1.push(res.data[index])
-              sum1 += Number(res.data[index].totalIncomeAmount)
+          for (let index in res.data.records) {
+            if (res.data.records[index].status == 0) {
+              list1.push(res.data.records[index])
+              sum1 += Number(res.data.records[index].totalIncomeAmount)
             } else {
-              list2.push(res.data[index])
-              sum2 += Number(res.data[index].totalIncomeAmount)
+              list2.push(res.data.records[index])
+              sum2 += Number(res.data.records[index].totalIncomeAmount)
             }
           }
           self.setData({
