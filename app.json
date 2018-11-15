@@ -22,24 +22,6 @@
     "navigationBarBackgroundColor": "#008CF0",
     "navigationBarTitleText": "代代裹裹侠",
     "navigationBarTextStyle": "white"
-  },
-  "tabBar": {
-    "color": "#666666",
     "selectedColor": "#3B86F7",
-    "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/order/index",
-        "text": "订单",
-        "iconPath": "./images/nav_02.png",
-        "selectedIconPath": "./images/nav_22.png"
-      },
-      {
-        "pagePath": "pages/mine/index",
-        "text": "我的",
-        "iconPath": "images/nav_03.png",
-        "selectedIconPath": "images/nav_33.png"
-      }
-    ]
   }
 }

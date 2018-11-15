@@ -10,6 +10,9 @@ Page({
         accountOfOrderId: options.id
       }, function(res) {
         if (res.code == 0) {
+          if (res.data) {
+            res.data.yongjin = (res.data.payPrice - res.data.incomeAmount).toFixed(2)
+          }
           self.setData({
             list: res.data
           })

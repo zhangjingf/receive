@@ -50,6 +50,11 @@ Page({
         self.setData({
           codeStr: '验证码已发送'
         })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
       }
     })
   },

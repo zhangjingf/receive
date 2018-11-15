@@ -26,9 +26,10 @@
   color:rgba(0,0,0,1);
 }
 .code {
-  padding: 0 26rpx;
+  width: 300rpx;
   font-size:28rpx;
   line-height: 44rpx;
+  text-align: center;
   font-family:PingFang-SC-Medium;
   font-weight:500;
   color:rgba(153,153,153,1);

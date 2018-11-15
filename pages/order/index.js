@@ -13,7 +13,9 @@ Page({
     visible1: false,
     numWait: 0,
     numFinish: 0,
-    transferData: null
+    transferData: null,
+    sumPrice: 0,
+    riderStatus: 0
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -21,13 +23,22 @@ Page({
     })
   },
   onShow: function () {
+    const self = this;
     this.setData({
       index1: 0,
       index11: 5,
-      list: []
+      list: [],
+      current: 'tab2'
     })
     this.listOne()
     this.count()
+    common.riderStatus({}, function(res) {
+      if (res.code == 0) {
+        self.setData({
+          riderStatus: res.data.riderStatus
+        })
+      }
+    })
   },
   handleChange: function({detail}) {
     this.setData({
@@ -291,13 +302,31 @@ Page({
     })
   },
   yunfee: function (e) {
-    this.setData({
-      expressPrice: e.detail.value
+    let sum = Number(e.detail.value) + Number(this.transferData.servicePrice) + Number(this.transferData.tipPrice);
+    this.setData({ 
+      expressPrice: e.detail.value,
+      sumPrice: sum
     })
   },
   company: function (e) {
     this.setData({
       expressName: e.detail.value
+    })
+  },
+  goMine: function () {
+    wx.navigateTo({
+      url: '../mine/index',
+    })
+  },
+  setStatus: function () {
+    const self = this;
+    let workStatus = this.data.riderStatus == 1 ? 0 : 1;
+    common.setStatus({workStatus: workStatus}, function (res) {
+      if (res.code == 0) {
+        self.setData({
+          riderStatus: workStatus          
+        })
+      }
     })
   }
 })

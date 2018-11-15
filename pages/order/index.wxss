@@ -171,3 +171,13 @@ image {
   text-align: center;
   color:#666666;
 }
+.btns {
+  padding-left: 39rpx;
+}
+.btns image{
+  width: 50rpx;
+  height: 45rpx;
+}
+.mine {
+  margin-top: 30rpx;
+}

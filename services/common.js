@@ -66,6 +66,32 @@ class Common {
       }
     })
   }
+  riderStatus(data, callback) {
+    ajax({
+      url: sendLink() + '/api/riderWork/getWorkStatus',
+      type: 'GET',
+      data: data,
+      success: function (ret) {
+        typeof callback == 'function' && callback.call(this, ret)
+      },
+      error: function (ret) {
+        typeof callback == 'function' && callback.call(this, ret)
+      }
+    })
+  }
+  setStatus(data, callback) {
+    ajax({
+      url: sendLink() + '/api/riderWork/setWork  ',
+      type: 'POST',
+      data: data,
+      success: function (ret) {
+        typeof callback == 'function' && callback.call(this, ret)
+      },
+      error: function (ret) {
+        typeof callback == 'function' && callback.call(this, ret)
+      }
+    })
+  }
 }
 
 export default new Common

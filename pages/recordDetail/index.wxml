@@ -11,7 +11,7 @@
   <block wx:for="{{list}}" wx:key="{{item.id}}">
     <view bindtap="goOrderDetail" data-id="{{item.idString}}">
       <view>{{item.orderTypeCn}}</view>
-      <view>{{item.actualPrice}}<i-icon type="enter" size="20" /></view>
+      <view>{{item.incomeAmount}}<i-icon type="enter" size="20" /></view>
     </view>
   </block>
 </view>

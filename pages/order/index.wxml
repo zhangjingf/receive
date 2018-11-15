@@ -62,6 +62,11 @@
     </view>
   </block>
 </view>
+<view class="btns">
+  <view><image bindtap="setStatus" wx:if="{{!riderStatus}}" src="../../images/clock.png"></image>
+  <image bindtap="setStatus" wx:if="{{riderStatus}}" src="../../images/working.png"></image></view>
+  <view bindtap="goMine" class="mine"><image src="../../images/mine.png"></image></view>
+</view>
 <i-action-sheet visible="{{ visible }}" bind:cancel="maskFlag" show-cancel="{{showCancel}}">
   <view slot="header">
     <view class="header2">请输入取件码</view>
@@ -77,11 +82,11 @@
     <view class="paper">
       <view class="item1"><view><text>快</text><text>递</text><text>公</text><text>司</text></view><input placeholder='请输入快递公司' bindinput='company' value='{{expressName}}'></input></view>
       <view class="item1"><view><text>运</text><text>输</text><text>单</text><text>号</text></view><input bindinput="express" type="number" placeholder='请输入单号'></input><view></view></view>
-      <view class="item1"><view><text>包</text><text>裹</text><text>重</text><text>量</text></view><input placeholder='请输入包裹重量' bindinput='weight'></input><view>kg</view></view>
-      <view class="item1"><view><text>运</text><text>费</text></view><input bindinput='yunfee' placeholder='请输入运费'></input><view>元</view></view>
+      <view class="item1"><view><text>包</text><text>裹</text><text>重</text><text>量</text></view><input placeholder='请输入包裹重量' type="number" bindinput='weight'></input><view>kg</view></view>
+      <view class="item1"><view><text>运</text><text>费</text></view><input bindinput='yunfee' type='number' placeholder='请输入运费'></input><view>元</view></view>
       <view class="item1"><view><text>服</text><text>务</text><text>费</text></view><view>{{transferData.servicePrice}}</view><view>元</view></view>
       <view class="item1"><view><text>小</text><text>费</text></view><view>{{transferData.tipPrice}}</view><view>元</view></view>
-      <view class="item1"><view><text>合</text><text>计</text></view><view>{{transferData.actualPrice}}</view><view>元</view></view>
+      <view class="item1"><view><text>合</text><text>计</text></view><view>{{sumPrice}}</view><view>元</view></view>
     </view>
     <view class="confirm" bindtap="submit">确认回传</view>
   </view>
