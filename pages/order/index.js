@@ -35,7 +35,7 @@ Page({
     common.riderStatus({}, function(res) {
       if (res.code == 0) {
         self.setData({
-          riderStatus: res.data.riderStatus
+          riderStatus: res.data.workStatus
         })
       }
     })
