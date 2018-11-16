@@ -94,7 +94,7 @@ class Common {
   }
   advice(data, callback) {
     ajax({
-      url: sendLink() + 'api/riderAdvise',
+      url: sendLink() + '/api/riderAdvise/save',
       type: 'POST',
       data: data,
       success: function (ret) {
