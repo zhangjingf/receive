@@ -54,6 +54,7 @@ Page({
     } else {
       this.listTwo();
     }
+    this.count()
   },
   listOne: function () {
     const self = this;
@@ -139,8 +140,8 @@ Page({
           index1: 0,
           index11: 5
         })
-        self.count()
-        self.listOne()
+        self.count();
+        self.listOne();
       } else {
         wx.showToast({
           title: res.msg,
@@ -302,7 +303,10 @@ Page({
     })
   },
   yunfee: function (e) {
-    let sum = Number(e.detail.value) + Number(this.transferData.servicePrice) + Number(this.transferData.tipPrice);
+    let sum = Number(e.detail.value)
+    if (this.data.transferData) {
+      sum = sum + Number(this.data.transferData.servicePrice) + Number(this.data.transferData.tipPrice);
+    }
     this.setData({ 
       expressPrice: e.detail.value,
       sumPrice: sum

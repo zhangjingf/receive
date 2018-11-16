@@ -1,6 +1,6 @@
 
 <view class="title">结算金额(元)</view>
-<view class="money">{{list.incomeAmount}}</view>
+<view class="money">+{{list.incomeAmount}}</view>
 <view class="fees">
   <view>
     <view>服务类型</view>
@@ -10,17 +10,21 @@
     <view>运费</view>
     <view>{{list.expressPrice}}</view>
   </view>
-  <view>
-    <view>订单金额</view>
-    <view>{{list.payPrice}}</view>
+  <view wx:if="{{list.orderType != 1}}">
+    <view>服务费</view>
+    <view>{{list.servicePrice}}</view>
   </view>
   <view wx:if="{{list.orderType != 1}}">
     <view>小费</view>
     <view>{{list.tipPrice}}</view>
   </view>
   <view>
+    <view>订单金额</view>
+    <view>{{list.payPrice}}</view>
+  </view>
+  <view>
     <view>佣金</view>
-    <view>{{list.yongjin}}</view>
+    <view>-{{list.yongjin}}</view>
   </view>
 </view>
 <view class="order">

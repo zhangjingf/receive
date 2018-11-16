@@ -1,5 +1,5 @@
 <view class="content">
-    <view>可用余额</view>
+    <view>可用余额（元）</view>
     <view>
         <view class="rest">{{availableBalance}}</view>
         <view bindtap="goDeposit" class="cash">提现</view>

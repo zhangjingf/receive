@@ -10,8 +10,8 @@
   </view>
   <block wx:for="{{list}}" wx:key="{{item.id}}">
     <view bindtap="goOrderDetail" data-id="{{item.idString}}">
-      <view>{{item.orderTypeCn}}</view>
-      <view>{{item.incomeAmount}}<i-icon type="enter" size="20" /></view>
+      <view bindtap="goOrderDetail" data-id="{{item.idString}}">{{item.orderTypeCn}}</view>
+      <view bindtap="goOrderDetail" data-id="{{item.idString}}">{{item.incomeAmount}}<i-icon type="enter" size="20" /></view>
     </view>
   </block>
 </view>

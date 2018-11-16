@@ -32,6 +32,7 @@
         <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10010}}" catchtap="takeExpressOne">取件</view>
         <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10020}}" catchtap="finish">送达</view>
         <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10030}}">回传</view>
+        <view class="gray" wx:if="{{item.operationType == 10040}}">待确认</view>
       </view>
     </view>
     <view class="item" wx:if="{{item.orderType == 2}}">
@@ -58,22 +59,22 @@
         <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10010}}" catchtap="takeExpress">取件</view>
         <view data-id="{{item.orderId}}" wx:if="{{item.operationType == 10020}}" catchtap="finish">送达</view>
         <view data-id="{{item.orderId}}" catchtap='transfer' wx:if="{{item.operationType == 10030}}">回传</view>
-        <view wx:if="{{item.operationType == 10040}}">待确认</view>
-        <view wx:if="{{item.operationType == 10050}}">待支付</view>
+        <view class="gray" wx:if="{{item.operationType == 10040}}">待确认</view>
+        <view class="gray" wx:if="{{item.operationType == 10050}}">待支付</view>
       </view>
     </view>
   </block>
 </view>
 <view class="btns">
-  <view><image bindtap="setStatus" wx:if="{{!riderStatus}}" src="../../images/off.png"></image>
-  <image bindtap="setStatus" wx:if="{{riderStatus}}" src="../../images/on.png"></image></view>
+  <view><image bindtap="setStatus" wx:if="{{riderStatus}}" src="../../images/off.png"></image>
+  <image bindtap="setStatus" wx:if="{{!riderStatus}}" src="../../images/on.png"></image></view>
   <view bindtap="goMine" class="mine"><image src="../../images/mine.png"></image></view>
 </view>
 <i-action-sheet visible="{{ visible }}" bind:cancel="maskFlag" show-cancel="{{showCancel}}">
   <view slot="header">
     <view class="header2">请输入取件码</view>
     <view class="qujian">
-      <view>取件码:</view><input type="text" bindinput="expresskey"></input>
+      <view>取件码:</view><input type="digit" bindinput="expresskey"></input>
     </view>
     <view class="confirm" bindtap="confirm">确认取件</view>
   </view>
@@ -83,9 +84,9 @@
     <view class="header2">请回传运单信息</view>
     <view class="paper">
       <view class="item1"><view><text>快</text><text>递</text><text>公</text><text>司</text></view><input placeholder='请输入快递公司' bindinput='company' value='{{expressName}}'></input></view>
-      <view class="item1"><view><text>运</text><text>输</text><text>单</text><text>号</text></view><input bindinput="express" type="number" placeholder='请输入单号'></input><view></view></view>
-      <view class="item1"><view><text>包</text><text>裹</text><text>重</text><text>量</text></view><input placeholder='请输入包裹重量' type="number" bindinput='weight'></input><view>kg</view></view>
-      <view class="item1"><view><text>运</text><text>费</text></view><input bindinput='yunfee' type='number' placeholder='请输入运费'></input><view>元</view></view>
+      <view class="item1"><view><text>运</text><text>输</text><text>单</text><text>号</text></view><input bindinput="express" placeholder='请输入单号'></input><view bindtap="scan"><image class="scan" src="../../images/scan.png"></image></view></view>
+      <view class="item1"><view><text>包</text><text>裹</text><text>重</text><text>量</text></view><input placeholder='请输入包裹重量' type="digit" bindinput='weight'></input><view>kg</view></view>
+      <view class="item1"><view><text>运</text><text>费</text></view><input bindinput='yunfee' type='digit' placeholder='请输入运费'></input><view>元</view></view>
       <view class="item1"><view><text>服</text><text>务</text><text>费</text></view><view>{{transferData.servicePrice}}</view><view>元</view></view>
       <view class="item1"><view><text>小</text><text>费</text></view><view>{{transferData.tipPrice}}</view><view>元</view></view>
       <view class="item1"><view><text>合</text><text>计</text></view><view>{{sumPrice}}</view><view>元</view></view>

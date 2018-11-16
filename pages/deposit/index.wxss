@@ -22,7 +22,6 @@
 }
 .money input {
   padding-left: 30rpx;
-  color:rgba(153,153,153,1);
 }
 .sum {
   margin-top: 18rpx;
