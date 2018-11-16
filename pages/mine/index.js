@@ -9,5 +9,10 @@ Page({
     wx.navigateTo({
       url: '../myWallet/index',
     })
+  },
+  goAdvice: function () {
+    wx.navigateTo({
+      url: '../myAdvice/index',
+    })
   }
 })

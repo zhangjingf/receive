@@ -15,7 +15,8 @@
     "pages/logs/logs",
     "pages/login/index",
     "pages/transition/index",
-    "pages/myWallet/index"
+    "pages/myWallet/index",
+    "pages/myAdvice/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

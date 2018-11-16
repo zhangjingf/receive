@@ -10,7 +10,6 @@ Page({
     })
   },
   bindTextAreaBlur: function (e) {
-    console.log(e)
     this.setData({
       advice: e.detail.value
     })
