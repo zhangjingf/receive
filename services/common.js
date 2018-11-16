@@ -81,8 +81,8 @@ class Common {
   }
   setStatus(data, callback) {
     ajax({
-      url: sendLink() + '/api/riderWork/setWork  ',
-      type: 'POST',
+      url: sendLink() + '/api/riderWork/setWork',
+      type: 'GET',
       data: data,
       success: function (ret) {
         typeof callback == 'function' && callback.call(this, ret)
