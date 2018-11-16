@@ -9,9 +9,9 @@
     <view>结算金额(元)</view>
   </view>
   <block wx:for="{{list}}" wx:key="{{item.id}}">
-    <view bindtap="goOrderDetail" data-id="{{item.idString}}">
-      <view bindtap="goOrderDetail" data-id="{{item.idString}}">{{item.orderTypeCn}}</view>
-      <view bindtap="goOrderDetail" data-id="{{item.idString}}">{{item.incomeAmount}}<i-icon type="enter" size="20" /></view>
+    <view catchtap="goOrderDetail" data-id="{{item.idString}}">
+      <view catchtap="goOrderDetail" data-id="{{item.idString}}">{{item.orderTypeCn}}</view>
+      <view catchtap="goOrderDetail" data-id="{{item.idString}}">{{item.incomeAmount}}<i-icon type="enter" size="20" /></view>
     </view>
   </block>
 </view>

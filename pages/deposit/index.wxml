@@ -1,6 +1,6 @@
 <view class="deposit">
   <view class="mount">提现额度</view>
-  <view class="money">¥<input placeholder='输入金额' bindinput="money"></input></view>
+  <view class="money">¥<input type="digit" placeholder='输入金额' bindinput="money"></input></view>
   <view class="sum">可提现余额：{{availableBalance}}元</view>
   <view class="submit {{status}}" bindtap="submit">提现</view>
 </view>

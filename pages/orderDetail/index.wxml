@@ -19,7 +19,7 @@
     <view>{{list.tipPrice}}</view>
   </view>
   <view>
-    <view>订单金额</view>
+    <view>合计</view>
     <view>{{list.payPrice}}</view>
   </view>
   <view>
