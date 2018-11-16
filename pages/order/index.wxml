@@ -1,8 +1,10 @@
+<view class="order_tab">
 <i-tabs current="{{ current }}" bindchange="handleChange" color="#008CF0">
     <!-- <i-tab key="tab1" title="待接单"></i-tab> -->
     <i-tab key="tab2" title="待取件({{numWait}})"></i-tab>
     <i-tab key="tab3" title="待完成({{numFinish}})"></i-tab>
 </i-tabs>
+</view>
 <view class="content">
   <view class="noorder" wx:if="{{list.length == 0}}">暂无订单</view>
   <block wx:for="{{list}}" wx:key="{{item.orderId}}">
@@ -63,8 +65,8 @@
   </block>
 </view>
 <view class="btns">
-  <view><image bindtap="setStatus" wx:if="{{!riderStatus}}" src="../../images/clock.png"></image>
-  <image bindtap="setStatus" wx:if="{{riderStatus}}" src="../../images/working.png"></image></view>
+  <view><image bindtap="setStatus" wx:if="{{!riderStatus}}" src="../../images/off.png"></image>
+  <image bindtap="setStatus" wx:if="{{riderStatus}}" src="../../images/on.png"></image></view>
   <view bindtap="goMine" class="mine"><image src="../../images/mine.png"></image></view>
 </view>
 <i-action-sheet visible="{{ visible }}" bind:cancel="maskFlag" show-cancel="{{showCancel}}">

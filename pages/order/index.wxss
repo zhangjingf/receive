@@ -1,5 +1,13 @@
 /* pages/order/index.wxss */
+.order_tab {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 750rpx;
+    z-index: 1000;
+}
 .content {
+  margin-top: 100rpx;
   margin-bottom: 20rpx;
 }
 .item {
@@ -172,11 +180,15 @@ image {
   color:#666666;
 }
 .btns {
+  position: fixed;
+  left: 0;
+  bottom: 30rpx;
   padding-left: 39rpx;
+  z-index: 1000;
 }
 .btns image{
   width: 50rpx;
-  height: 45rpx;
+  height: 50rpx;
 }
 .mine {
   margin-top: 30rpx;
