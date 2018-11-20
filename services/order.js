@@ -27,6 +27,19 @@ class Order {
           }
       })
   }
+  listThree(data, callback) { //待完成
+    ajax({
+      url: sendLink() + '/api/riderOrder/searchNeedToDeliveryOrder',
+      type: 'GET',
+      data: data,
+      success: function (ret) {
+        typeof callback == 'function' && callback.call(this, ret)
+      },
+      error: function (ret) {
+        typeof callback == 'function' && callback.call(this, ret)
+      }
+    })
+  }
   handle(data, callback) {
       ajax({
           url: sendLink() + '/api/riderOrder/reportToPickOrder',

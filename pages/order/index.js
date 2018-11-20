@@ -7,12 +7,15 @@ Page({
     index11: 5,
     index2: 0,
     index22: 5,
+    index3: 0,
+    index33: 5,
     list: [],
     showCancel: false,
     visible: false,
     visible1: false,
     numWait: 0,
     numFinish: 0,
+    numSend: 0,
     transferData: null,
     sumPrice: 0,
     riderStatus: 0
@@ -48,11 +51,15 @@ Page({
       index11: 5,
       index2: 0,
       index22: 5,
+      index3: 0,
+      index33: 5
     })
     if(detail.key == 'tab2') {
       this.listOne();
-    } else {
+    } else if (detail.key == 'tab3'){
       this.listTwo();
+    } else {
+      this.listThree();
     }
     this.count()
   },
@@ -91,13 +98,30 @@ Page({
       }
     })
   },
+  listThree: function(){
+    const self = this;
+    wx.showLoading({
+      title: '加载中'
+    })
+    order.listThree({ startIndex: this.data.index3, endIndex: this.data.index33 }, function (res) {
+      wx.hideLoading();
+      if (res.code == 0 && res.data.orderList) {
+        let dataList = self.data.list.concat(res.data.orderList);
+        self.setData({
+          list: dataList,
+          loadMoreThree: res.data.length < 5 ? true : false
+        })
+      }
+    })
+  },
   count: function() {
     let self = this;
     order.count({}, function(res) {
       if (res.code == 0 && res.data) {
         self.setData({
           numWait: res.data['10010'],
-          numFinish: res.data['10020']
+          numFinish: res.data['10040'],
+          numSend: res.data['10020']
         })
       }
     })
@@ -207,6 +231,14 @@ Page({
       })
       this.listTwo()
     }
+    if (this.data.current == 'tab4') {
+      if (this.data.loadMoreThree) return;
+      this.setData({
+        index3: this.data.index33,
+        index33: this.data.index33 + 5
+      })
+      this.listThree()
+    }
   },
   takeExpressOne: function (e) {
     let self = this;
@@ -307,7 +339,7 @@ Page({
     if (this.data.transferData) {
       sum = sum + Number(this.data.transferData.servicePrice) + Number(this.data.transferData.tipPrice);
     }
-    this.setData({ 
+    this.setData({
       expressPrice: e.detail.value,
       sumPrice: sum
     })
