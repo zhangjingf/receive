@@ -40,7 +40,7 @@ Page({
   login: function (res) {
     app.globalData.userInfo = res.userInfo;
     var param = {
-      code: app.globalData.code,
+      code: '',
       riderInfo: {
         riderInfo: {
           country: res.userInfo.country,
@@ -58,34 +58,39 @@ Page({
         rawData: JSON.stringify(JSON.parse(res.rawData))
       }
     }
-    if (res.userInfo) {
-      common.login(param, function (res) {
-        if (res.data) {
-          if (res.data.token) {
-            wx.setStorage({
-              key: "rider_token",
-              data: res.data.token
-            })
-          }
+    wx.login({
+      success: req => {
+        param.code = req.code
+        if (res.userInfo) {
+          common.login(param, function (res) {
+            if (res.data) {
+              if (res.data.token) {
+                wx.setStorage({
+                  key: "rider_token",
+                  data: res.data.token
+                })
+              }
+            }
+            if (res.code == 0) {
+              wx.setStorage({
+                key: 'riderId',
+                data: res.data.riderId
+              })
+              wx.reLaunch({
+                url: '../order/index'
+              })
+            } else if (res.code == 2000) {
+              wx.reLaunch({
+                url: '../signIn/index',
+              })
+            } else if (res.code == 2001) {
+              wx.reLaunch({
+                url: '../transition/index'
+              })
+            }
+          })
         }
-        if (res.code == 0) {
-          wx.setStorage({
-            key: 'riderId',
-            data: res.data.riderId
-          })
-          wx.reLaunch({
-            url: '../order/index'
-          })
-        } else if (res.code == 2000) {
-          wx.reLaunch({
-            url: '../signIn/index',
-          })
-        } else if (res.code == 2001) {
-          wx.reLaunch({
-            url: '../transition/index'
-          })
-        }
-      })
-    }
+      }
+    })
   }
 })

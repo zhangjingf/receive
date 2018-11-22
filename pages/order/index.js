@@ -33,8 +33,8 @@ Page({
       list: [],
       current: 'tab2'
     })
-    this.listOne()
     this.count()
+    this.listOne()
     common.riderStatus({}, function(res) {
       if (res.code == 0) {
         self.setData({
@@ -184,11 +184,11 @@ Page({
         })
         self.setData({
           list: [],
-          index2: 0,
-          index22: 5
+          index3: 0,
+          index33: 5
         })
         self.count();
-        self.listTwo();
+        self.listThree();
       } else {
         wx.showToast({
           title: res.msg,
@@ -277,11 +277,11 @@ Page({
         self.setData({
           list: [],
           visible1: false,
-          index2: 0,
-          index22: 5
+          index3: 0,
+          index33: 5
         })
         self.count();
-        self.listTwo();
+        self.listThree();
       } else {
         wx.showToast({
           title: res.msg,
@@ -360,7 +360,7 @@ Page({
     common.setStatus({workStatus: workStatus}, function (res) {
       if (res.code == 0) {
         self.setData({
-          riderStatus: workStatus          
+          riderStatus: workStatus
         })
       }
     })
