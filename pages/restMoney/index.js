@@ -5,7 +5,7 @@ Page({
   },
   onLoad: function () {
     const self = this;
-    rider.fundsAccountRecord({type: 0}, function (res) {
+    rider.fundsAccountRecord({}, function (res) {
       if (res.code == 0 && res.data) {
           self.setData({
             totalAmount: res.data.currentBalance,

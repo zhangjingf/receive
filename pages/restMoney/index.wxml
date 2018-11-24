@@ -6,7 +6,7 @@
   <block wx:for="{{recordList}}" wx:key="{{item.id}}">
     <view class="item">
       <view>
-        <view><text class="time">{{item.createDayFormat}}日账单</text><text class="num type">{{item.statusCn}}</text></view>
+        <view><text class="time">{{item.recordTitle}}</text><text class="num type">{{item.statusCn}}</text></view>
         <view class="num distance">{{item.createTimeFormat}}</view>
       </view>
       <view>

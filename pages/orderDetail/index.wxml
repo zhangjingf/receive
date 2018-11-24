@@ -24,7 +24,7 @@
   </view>
   <view>
     <view>佣金</view>
-    <view>-{{list.yongjin}}</view>
+    <view>-{{list.systemIncom}}</view>
   </view>
 </view>
 <view class="order">
