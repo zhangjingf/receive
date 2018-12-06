@@ -1,5 +1,6 @@
 import order from '../../services/order';
 import common from '../../services/common.js';
+const app = getApp();
 Page({
   data: {
     current: 'tab2',
@@ -25,17 +26,40 @@ Page({
       title: '订单',
     })
   },
+  getAuthorization: function () {
+    const self = this
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: function (res) {
+              self.login(res);
+            }
+          });
+        }
+      },
+      fail: function () {
+        wx.reLaunch({
+          url: '../start/index',
+        })
+      }
+    })
+  },
   onShow: function () {
     const self = this;
+    self.getAuthorization()
     this.setData({
       index1: 0,
       index11: 5,
       list: [],
       current: 'tab2'
     })
+  },
+  nextStep: function () {
+    const self = this;
     this.count()
     this.listOne()
-    common.riderStatus({}, function(res) {
+    common.riderStatus({}, function (res) {
       if (res.code == 0) {
         self.setData({
           riderStatus: res.data.workStatus
@@ -362,6 +386,61 @@ Page({
         self.setData({
           riderStatus: workStatus
         })
+      }
+    })
+  },
+  login: function (res) {
+    const self = this;
+    app.globalData.userInfo = res.userInfo;
+    var param = {
+      code: '',
+      riderInfo: {
+        riderInfo: {
+          country: res.userInfo.country,
+          gender: res.userInfo.gender,
+          province: res.userInfo.province,
+          city: res.userInfo.city,
+          avatarUrl: res.userInfo.avatarUrl,
+          nickName: res.userInfo.nickName,
+          language: res.userInfo.language
+        },
+        signature: res.signature,
+        errMsg: res.errMsg,
+        encryptedData: res.encryptedData,
+        iv: res.iv,
+        rawData: JSON.stringify(JSON.parse(res.rawData))
+      }
+    }
+    wx.login({
+      success: req => {
+        param.code = req.code
+        if (res.userInfo) {
+          common.login(param, function (res) {
+            if (res.data) {
+              if (res.data.token) {
+                wx.setStorage({
+                  key: "rider_token",
+                  data: res.data.token
+                })
+              }
+            }
+            if (res.code == 0) {
+              wx.setStorage({
+                key: 'riderId',
+                data: res.data.riderId
+              })
+              self.nextStep()
+            } else if (res.code == 2000) {
+              wx.reLaunch({
+                url: '../signIn/index',
+              })
+            } else if (res.code == 2001) {
+              wx.reLaunch({
+                url: '../transition/index'
+              })
+            }
+          })
+        }
       }
     })
   }

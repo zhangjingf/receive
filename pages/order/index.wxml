@@ -13,7 +13,7 @@
       <view class="header">
         <view>取</view>
         <view>{{item.serviceTime}}</view>
-        <view>¥{{item.actualPrice}}</view>
+        <view>¥{{item.orderPrice}}</view>
       </view>
       <view class="info">
         <view><view>{{item.userName}} {{item.userPhone}}</view><image src="../../images/phone.png" bindtap='call' data-phone="{{item.userPhone}}"></image></view>
