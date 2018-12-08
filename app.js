@@ -6,7 +6,10 @@ App({
     var riderToken = wx.getStorageSync('rider_token') || ''
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    wx.setStorage({
+      key: 'loginFlag',
+      data: false
+    })
     // 登录
     wx.login({
       success: res => {
@@ -50,6 +53,10 @@ App({
               if (res.userInfo && !riderToken) {
                 common.login(param, function (res) {
                   if (res.data.token) {
+                    wx.setStorage({
+                      key: 'loginFlag',
+                      data: true
+                    })
                     wx.setStorage({
                       key: "rider_token",
                       data: res.data.token

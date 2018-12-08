@@ -66,6 +66,10 @@ Page({
             if (res.data) {
               if (res.data.token) {
                 wx.setStorage({
+                  key: 'loginFlag',
+                  data: true
+                })
+                wx.setStorage({
                   key: "rider_token",
                   data: res.data.token
                 })

@@ -47,7 +47,12 @@ Page({
   },
   onShow: function () {
     const self = this;
-    self.getAuthorization()
+    let loginStatus = wx.getStorageSync('loginFlag')
+    if (loginStatus) {
+      self.nextStep()
+    } else {
+      self.getAuthorization()
+    }
     this.setData({
       index1: 0,
       index11: 5,
