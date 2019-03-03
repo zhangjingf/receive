@@ -44,11 +44,30 @@ Page({
   },
   getCode: function () {
     const self = this;
+    let count = 0;
+    let isLock = false
     if(!this.data.phone) return;
+    if (isLock) {
+      return
+    }
     common.code({phone: this.data.phone}, function (res) {
       if (res.code == 0) {
-        self.setData({
-          codeStr: '验证码已发送'
+        count = 1
+        isLock = true
+        let timer = setInterval(function() {
+          self.setData({
+            codeStr: count < 60 ? count + 's' : '发送验证码'
+          })
+          count++
+          if (count > 60) {
+            isLock = false
+            count = 1
+            clearInterval(timer)
+          }
+        }, 1000)
+        wx.showToast({
+          title: '验证码发送成功',
+          icon: 'none'
         })
       } else {
         wx.showToast({
